@@ -29,7 +29,7 @@ You're done at this point. If you have a running application in `app/`, and you 
 
 Now that the image is built, we can run it. 
 
-`docker run --rm -d your-rpo/your-bot-name:latest`
+`docker run --rm -d -p 3000:3000 your-rpo/your-bot-name:latest`
 
 That's it. It's running in daemon mode. If you want to be sure that it's running:
 
