@@ -23,6 +23,6 @@ RUN adduser -D steembot steembot \
 
 USER steembot
 
-CMD ["npm", "start", "$STEEM_NAME", "$STEEM_WIF"]
+CMD ["npm", "start" ]
 
 
