@@ -13,14 +13,15 @@ ONBUILD RUN cd /app && npm install
 
 # Now copy in the full code for the app
 ONBUILD COPY . /app
-ONBUILD RUN npm run build && rm -rf node_modules && npm install --production
+ONBUILD RUN npm run build && rm -rf node_modules && npm install --production 
+    
 
 # Set our workdirectory to the app and start with npm
 WORKDIR /app
 EXPOSE 3000
 
 RUN adduser -D steembot steembot \
-    && chown -R steembot /app
+    && chown -R steembot:steembot /app
 
 USER steembot
 
