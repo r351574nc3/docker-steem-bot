@@ -6,14 +6,15 @@ ENV STEEM_NAME "NO_USER_SPECIFIED"
 ENV STEEM_WIF  "NO_WIF_SPECIFIED"
 
 RUN apk update \
-    && apk add --no-progress --no-cache nodejs
+    && apk add --no-progress --no-cache nodejs util-linux \
+    && npm install -g parcel-bundler
 
 ONBUILD COPY package*json .npmrc* /app/
 ONBUILD RUN cd /app && npm install 
 
 # Now copy in the full code for the app
 ONBUILD COPY . /app
-ONBUILD RUN npm run build && rm -rf node_modules && npm install --production 
+ONBUILD RUN npm run build && npm install --production 
     
 
 # Set our workdirectory to the app and start with npm
